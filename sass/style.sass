@@ -1,0 +1,118 @@
+$key_width: 44px
+$key_height: 300px
+$color_white: #eee
+$color_black: #585858
+
+@mixin size($w,$h)
+  width: $w
+  height: $h
+  
+body,html
+  height: 100%
+  
+*
+  vertical-align: top
+
+.piano
+  margin-bottom: 50px
+  display: inline-block
+  box-shadow: 0px 0px 40px -5px rgba(black,.400)
+  
+.center
+  position: realative
+  width: 100%
+  // top: 50%
+  // left: 50%
+  // transform: translate(-50%,-50%)
+  margin-top: 100px
+  text-align: center
+
+.pianokey
+  display: inline-block
+  // +size($key_width,$key_height)
+  position: relative
+  cursor: pointer
+  .key
+    position: absolute
+    bottom: -25px
+    left: 50%
+    transform: translateX(-50%)
+    font-size: 10px
+    color: $color_white
+  
+.black
+  top: 0px
+  position: absolute
+  +size($key_width/2,$key_height / 1.8)
+  margin-left: -$key_width / 4
+  margin-right: -$key_width / 4
+  border: 1px solid black
+  z-index: 20
+  background-color: lighten(black,30)
+  transform: translate(-3px,-3px)
+  &:hover
+    transform: translate(0px,0px)
+    background-color: black
+  &.playing
+    background-color: black
+
+.white
+  +size($key_width,$key_height)
+  border: 1px solid $color_white
+  transform: translate(-3px,-3px)
+  &:hover
+    transform: translate(0px,0px)
+    background-color: darken($color_white,5)
+  &.playing
+    background-color: darken($color_white,5)
+    
+.playtime
+  margin-top: 20px
+    
+ul
+  .note
+    display: inline-block
+    border-right: 1px solid $color_black
+    padding: 2px 5px
+    cursor: pointer
+    &.playing
+      background-color: darken($color_white,5)
+    &:hover
+      background-color: $color_white
+    .num
+      font-size: 16px
+      color: rgba(black,.500)
+    .time
+      font-size: 10px
+      color: darken($color_white,10)
+  
+    
+button
+  background-color: transparent
+  border: none
+  border: 1px solid black
+  border-radius: 5px
+  cursor: pointer
+  padding: 5px 10px
+  &:hover
+    background-color: $color_black
+    color: white
+  
+i
+  margin-left: 5px
+  margin-top: 2px
+  
+.fas.fa-circle,.fas.fa-times,.fas.fa-stop
+  color: darken(red,10)
+.fas.fa-bookmark
+  color: darken(blue,10)
+
+.notes
+  width: 70%
+  max-width: 700px
+  margin: 0 auto
+  text-align: left
+  padding: 20px
+  li
+    width: 30px
+    margin: 2px 0px

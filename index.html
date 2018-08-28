@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Piano by Vue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  
+<div id="app">
+  <div class="center">
+    <h1>Piano by Vue </h1>
+    <audio :data-num="a" v-for="(a,id) in soundpack_index">
+      <source :src="'https://awiclass.monoame.com/pianosound/set/'+a+'.wav'" type="audio/wav"/>
+    </audio>
+    <div class="piano">
+      <div class="pianokey" v-for="(d,id) in display_key">
+        <div class="white" v-if="d.type == 'white'" @click="addnote(d.num)" :class="{'playing' : (d.num == nowplayingkey) ? true : false}"> 
+          <div class="key">{{String.fromCharCode(d.key)}}</div>
+        </div>
+        <div class="black" v-else="v-else" @click="addnote(d.num)" :class="{'playing' : (d.num == nowplayingkey) ? true : false}"> 
+          <div class="key">{{String.fromCharCode(d.key)}}</div>
+        </div>
+      </div>
+    </div>
+    <ul class="notes">
+      <li class="note" v-for="(s,id) in song" :class="{'playing' : (id == nowplaying-1) &amp;&amp; playing ? true : false}" @click="playnote(s.num)"> 
+        <div class="num">{{s.num}} </div>
+        <div class="time">{{s.time}}</div>
+      </li>
+    </ul>
+    <button @click="getsmaple()"> Sample<i class="fas fa-bookmark"></i></button>
+    <button @click="startplay" v-if="(nowplaying == 0)"> StrarPlay<i class="fas fa-play"></i></button>
+    <button @click="stopplay" v-else="v-else"> StopPlay<i class="fas fa-stop"></i></button>
+    <button @click="startrecord" v-if="!recording"> StrarRecord<i class="fas fa-circle"></i></button>
+    <button @click="stoprecord" v-else="v-else"> StopRecord<i class="fas fa-stop"></i></button>
+    <button @click="song = []"> Clear<i class="fas fa-times"></i></button>
+    <div class="playtime">{{playtime}}ms</div>
+  </div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

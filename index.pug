@@ -1,0 +1,29 @@
+#app()
+  .center
+    h1 Piano by Vue 
+    audio(:data-num="a" v-for="(a,id) in soundpack_index")
+      source( :src="'https://awiclass.monoame.com/pianosound/set/'+a+'.wav'" type="audio/wav")
+    .piano
+      .pianokey(v-for="(d,id) in display_key")
+        .white(v-if="d.type == 'white'" @click="addnote(d.num)" :class="{'playing' : (d.num == nowplayingkey) ? true : false}") 
+          .key {{String.fromCharCode(d.key)}}
+        .black(v-else  @click="addnote(d.num)" :class="{'playing' : (d.num == nowplayingkey) ? true : false}") 
+          .key {{String.fromCharCode(d.key)}}
+    ul.notes
+      li.note(v-for="(s,id) in song" :class="{'playing' : (id == nowplaying-1) && playing ? true : false}" @click="playnote(s.num)") 
+        .num {{s.num}} 
+        .time {{s.time}}
+    button(@click="getsmaple()")  Sample
+      i.fas.fa-bookmark
+    button(@click="startplay" v-if="(nowplaying == 0)")  StrarPlay
+      i.fas.fa-play
+    button(@click="stopplay" v-else)  StopPlay
+      i.fas.fa-stop
+    button(@click="startrecord" v-if="!recording")  StrarRecord
+      i.fas.fa-circle
+    button(@click="stoprecord" v-else)  StopRecord
+      i.fas.fa-stop
+    button(@click="song = []")  Clear
+      i.fas.fa-times
+    .playtime {{playtime}}ms
+      

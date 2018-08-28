@@ -1,0 +1,131 @@
+body, html {
+  height: 100%;
+}
+
+* {
+  vertical-align: top;
+}
+
+.piano {
+  margin-bottom: 50px;
+  display: inline-block;
+  box-shadow: 0px 0px 40px -5px rgba(0, 0, 0, 0.4);
+}
+
+.center {
+  position: realative;
+  width: 100%;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.pianokey {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+.pianokey .key {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #eee;
+}
+
+.black {
+  top: 0px;
+  position: absolute;
+  width: 22px;
+  height: 166.6666666667px;
+  margin-left: -11px;
+  margin-right: -11px;
+  border: 1px solid black;
+  z-index: 20;
+  background-color: #4d4d4d;
+  transform: translate(-3px, -3px);
+}
+.black:hover {
+  transform: translate(0px, 0px);
+  background-color: black;
+}
+.black.playing {
+  background-color: black;
+}
+
+.white {
+  width: 44px;
+  height: 300px;
+  border: 1px solid #eee;
+  transform: translate(-3px, -3px);
+}
+.white:hover {
+  transform: translate(0px, 0px);
+  background-color: #e1e1e1;
+}
+.white.playing {
+  background-color: #e1e1e1;
+}
+
+.playtime {
+  margin-top: 20px;
+}
+
+ul .note {
+  display: inline-block;
+  border-right: 1px solid #585858;
+  padding: 2px 5px;
+  cursor: pointer;
+}
+ul .note.playing {
+  background-color: #e1e1e1;
+}
+ul .note:hover {
+  background-color: #eee;
+}
+ul .note .num {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.5);
+}
+ul .note .time {
+  font-size: 10px;
+  color: #d5d5d5;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+button:hover {
+  background-color: #585858;
+  color: white;
+}
+
+i {
+  margin-left: 5px;
+  margin-top: 2px;
+}
+
+.fas.fa-circle, .fas.fa-times, .fas.fa-stop {
+  color: #cc0000;
+}
+
+.fas.fa-bookmark {
+  color: #0000cc;
+}
+
+.notes {
+  width: 70%;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 20px;
+}
+.notes li {
+  width: 30px;
+  margin: 2px 0px;
+}
